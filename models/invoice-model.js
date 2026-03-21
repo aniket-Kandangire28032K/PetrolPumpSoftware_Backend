@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const today = new Date().toISOString().split("T")[0];
 
 const itemSchema = new mongoose.Schema(
   {
@@ -12,6 +13,10 @@ const itemSchema = new mongoose.Schema(
       type: Number,
       min: 0,
       required: true,
+    },
+    vat:{
+      type:Number,
+      min:0
     },
     rate: {
       type: Number,
@@ -29,6 +34,10 @@ const itemSchema = new mongoose.Schema(
 
 const invoiceSchema = new mongoose.Schema(
   {
+    date:{
+      type:String,
+      default:today
+    },
     companyname: {
       type: String,
       lowercase: true,

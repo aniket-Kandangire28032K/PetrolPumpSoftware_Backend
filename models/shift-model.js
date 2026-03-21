@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema({
-    pumpcode:{
+    fuel:{
         type:String,
         lowercase:true
     },

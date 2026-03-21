@@ -45,7 +45,7 @@ export const deleteFuel = async (req,res) => {
     } catch (error) {
         return res.status(500).json({
             message:"Internal Server Error",
-            error
+            error:error
         })
     }
 }
@@ -54,7 +54,7 @@ export const deleteFuel = async (req,res) => {
 // PUT API
 export const putFuel = async (req,res) => {
     try {
-        const {id} =req.param;
+        const {id} =req.params;
         const  updateFuel= await fuelmodel.findByIdAndUpdate(
             id,
             req.body,{

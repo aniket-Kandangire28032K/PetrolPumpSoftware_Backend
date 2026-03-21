@@ -18,6 +18,14 @@ const customerSchema = new mongoose.Schema({
     address:{
         type:String,
         trim:true
+    },
+    credits:{
+        type:Number,
+        min:0
+    },
+    creditslimit:{
+        type:Number,
+        min:0
     }
 },{
     timestamps:true

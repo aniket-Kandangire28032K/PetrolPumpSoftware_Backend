@@ -11,7 +11,7 @@ import FuelRouter from './routes/fuel-route.js'
 import StaffRouter from "./routes/staff-route.js"
 import InvoiceRouter from './routes/invoice-route.js'
 import ShiftRouter from "./routes/shift-router.js"
-import TankRouter from "./routes/tank-router.js"
+// import TankRouter from "./routes/tank-router.js"
 import ExpensesRouter from "./routes/expenses-route.js"
 dotenv.config();
 
@@ -28,7 +28,7 @@ app.use('/api/fuel',FuelRouter)
 app.use('/api/staff',StaffRouter)
 app.use('/api/invoice',InvoiceRouter)
 app.use('/api/shift',ShiftRouter)
-app.use('/api/tankdetails',TankRouter)
+// app.use('/api/tankdetails',TankRouter)
 app.use('/api/expenses',ExpensesRouter)
 
 const connectDB = async () => {
