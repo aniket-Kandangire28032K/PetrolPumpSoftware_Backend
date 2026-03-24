@@ -21,6 +21,10 @@ const itemSchema = new mongoose.Schema({
     salerate:{
         type:Number,min:0
     },
+    nozel:{
+        type:String,
+        lowercase:true
+    },
 },{_id:false})
 
 const shiftSchema = new mongoose.Schema({

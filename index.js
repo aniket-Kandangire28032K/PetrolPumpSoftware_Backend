@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import productrouter from './routes/product-route.js'
 import customerrouter from './routes/customer-route.js'
 import userRouter from './routes/user-route.js'
 import supplierRouter from './routes/supplier-route.js'
@@ -11,16 +10,17 @@ import FuelRouter from './routes/fuel-route.js'
 import StaffRouter from "./routes/staff-route.js"
 import InvoiceRouter from './routes/invoice-route.js'
 import ShiftRouter from "./routes/shift-router.js"
-// import TankRouter from "./routes/tank-router.js"
 import ExpensesRouter from "./routes/expenses-route.js"
+import DiptestRouter from "./routes/diptext-route.js"
+import LubeRouter from "./routes/lube-router.js"
+import RequestRouter from "./routes/request-route.js"
 dotenv.config();
 
 const app = express();
 
-
 app.use(cors());
 app.use(express.json()); // parse JSON body
-app.use('/api/product',productrouter)
+
 app.use('/api/customer',customerrouter)
 app.use('/api/user',userRouter)
 app.use('/api/supplier',supplierRouter)
@@ -28,8 +28,10 @@ app.use('/api/fuel',FuelRouter)
 app.use('/api/staff',StaffRouter)
 app.use('/api/invoice',InvoiceRouter)
 app.use('/api/shift',ShiftRouter)
-// app.use('/api/tankdetails',TankRouter)
+app.use('/api/diptest',DiptestRouter)
 app.use('/api/expenses',ExpensesRouter)
+app.use('/api/lube',LubeRouter)
+app.use('/api/request',RequestRouter)
 
 const connectDB = async () => {
   try {
