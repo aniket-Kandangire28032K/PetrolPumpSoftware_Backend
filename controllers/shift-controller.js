@@ -1,5 +1,5 @@
 import shiftModel from "../models/shift-model.js"
-import fuelmodel from "../models/fuel-model.js"
+import StaffModel from "../models/staff-model.js";
 export const getShiftData = async (req,res) => {
     try {
         const shiftData = await shiftModel.find().sort({date:-1});
@@ -21,12 +21,13 @@ export const postShiftData = async (req,res) => {
     try {
         const data = req.body;
         const shiftData = await shiftModel.create(data);
-        for(const item of data.nozels){
-            await fuelmodel.updateOne(
-                {name:item.fuel},
-                {$inc:{liters:-Number(item.sale)}}
-            );
-        }
+        const empleyee = await StaffModel.updateOne(
+            {name : data.name},
+            {
+                $inc:{cash:Number(data.remainingAmount)}
+            }
+        )
+        console.log(data)
         return res.status(200).json({
             success:true,
             shiftData:shiftData

@@ -21,6 +21,9 @@ const userSchema = new mongoose.Schema({
         type:String,
         trim:true,
         lowercase:true
+    },cash:{
+        type:Number,
+        default:0
     }
 });
 

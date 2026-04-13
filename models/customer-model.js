@@ -19,6 +19,11 @@ const customerSchema = new mongoose.Schema({
         type:String,
         trim:true
     },
+    vehicleNumber:{
+        type:String,
+        trim:true,
+        uppercase:true
+    },
     credits:{
         type:Number,
         min:0
@@ -31,5 +36,5 @@ const customerSchema = new mongoose.Schema({
     timestamps:true
 });
 
-const customerModel = new mongoose.model('customerModel',customerSchema,'CustomersList');
+const customerModel = mongoose.model('customerModel',customerSchema,'CustomersList');
 export default customerModel;

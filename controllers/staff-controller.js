@@ -62,3 +62,29 @@ export const updateStaff = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const deleteStaff = async (req,res) => {
+  const {id} = req.params;
+  try {
+    const staff = await StaffModel.findByIdAndDelete(id)
+     if (!staff) {
+      return res.status(404).json({
+        success: false,
+        message: "Staff not found"
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Staff deleted successfully",
+      data: staff
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: error.message
+    });
+  }
+  
+}

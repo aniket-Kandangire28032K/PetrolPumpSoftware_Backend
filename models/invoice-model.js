@@ -16,7 +16,8 @@ const itemSchema = new mongoose.Schema(
     },
     vat:{
       type:Number,
-      min:0
+      min:0,
+      default:0
     },
     rate: {
       type: Number,
@@ -70,6 +71,9 @@ const invoiceSchema = new mongoose.Schema(
     transportname:{
       type:String,
       lowercase:true
+    },
+    transportercontact:{
+      type:String,
     },
     transportnumber:{
       type:String,

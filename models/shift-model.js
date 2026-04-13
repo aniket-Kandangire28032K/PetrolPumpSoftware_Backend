@@ -26,6 +26,13 @@ const itemSchema = new mongoose.Schema({
         lowercase:true
     },
 },{_id:false})
+const paymentSchema = new mongoose.Schema({
+    paymentMode:{
+        type:String,
+        trim:true
+    },
+    amount:Number
+},{id:false})
 
 const shiftSchema = new mongoose.Schema({
     date:{
@@ -47,7 +54,17 @@ const shiftSchema = new mongoose.Schema({
         type:[itemSchema],
         default:[]
     },
+    payment_Mode:{
+        type:[paymentSchema],
+        default:[]
+    },
     total:{
+        type:Number
+    },
+    submitAmount:{
+        type:Number
+    },
+    remainingAmount:{
         type:Number
     }
 },{
