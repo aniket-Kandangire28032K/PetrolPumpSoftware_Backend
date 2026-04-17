@@ -14,6 +14,7 @@ import ExpensesRouter from "./routes/expenses-route.js"
 import DiptestRouter from "./routes/diptext-route.js"
 import LubeRouter from "./routes/lube-router.js"
 import RequestRouter from "./routes/request-route.js"
+import LubePurchase from "./routes/LubePurchase-router.js"
 dotenv.config();
 
 const app = express();
@@ -32,6 +33,7 @@ app.use('/api/diptest',DiptestRouter)
 app.use('/api/expenses',ExpensesRouter)
 app.use('/api/lube',LubeRouter)
 app.use('/api/request',RequestRouter)
+app.use('/api/lube-purchase',LubePurchase)
 
 const connectDB = async () => {
   try {
