@@ -6,4 +6,5 @@ const router = e.Router();
 router.get("/",gettankdetails);
 router.post("/",posttankdetails);
 
+
 export default router;

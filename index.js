@@ -15,6 +15,8 @@ import DiptestRouter from "./routes/diptext-route.js"
 import LubeRouter from "./routes/lube-router.js"
 import RequestRouter from "./routes/request-route.js"
 import LubePurchase from "./routes/LubePurchase-router.js"
+import TankerTest from './routes/TankerDiptest-router.js'
+import lubeStock from './routes/LubeStock-router.js'
 dotenv.config();
 
 const app = express();
@@ -22,18 +24,20 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // parse JSON body
 
-app.use('/api/customer',customerrouter)
-app.use('/api/user',userRouter)
-app.use('/api/supplier',supplierRouter)
-app.use('/api/fuel',FuelRouter)
-app.use('/api/staff',StaffRouter)
-app.use('/api/invoice',InvoiceRouter)
-app.use('/api/shift',ShiftRouter)
-app.use('/api/diptest',DiptestRouter)
-app.use('/api/expenses',ExpensesRouter)
-app.use('/api/lube',LubeRouter)
-app.use('/api/request',RequestRouter)
-app.use('/api/lube-purchase',LubePurchase)
+app.use('/api/customer',customerrouter);
+app.use('/api/user',userRouter);
+app.use('/api/supplier',supplierRouter);
+app.use('/api/fuel',FuelRouter);
+app.use('/api/staff',StaffRouter);
+app.use('/api/invoice',InvoiceRouter);
+app.use('/api/shift',ShiftRouter);
+app.use('/api/diptest',DiptestRouter);
+app.use('/api/expenses',ExpensesRouter);
+app.use('/api/lube',LubeRouter);
+app.use('/api/request',RequestRouter);
+app.use('/api/lube-purchase',LubePurchase);
+app.use('/api/tanker-test',TankerTest);
+app.use('/api/lube-stock',lubeStock);
 
 const connectDB = async () => {
   try {

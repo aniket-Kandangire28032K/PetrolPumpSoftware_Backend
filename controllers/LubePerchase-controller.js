@@ -1,4 +1,6 @@
+import mongoose from "mongoose"
 import LubePurchaseModel from "../models/lubePurchase-model.js"
+import LubeStock from "../models/LubeStock-model.js"
 
 export const getInvoices = async(req,res)=>{
     try {
@@ -21,27 +23,37 @@ export const getInvoices = async(req,res)=>{
     }
 }
 
-export const postInvoice = async (req,res) => {
-     try {
-        const data = req.body;
-        const savedData = await LubePurchaseModel.create(data);
+export const postInvoice = async (req, res) => {
+  try {
+    const data = req.body;
 
-        if(!savedData){
-          return res.status(500).json({
-                message:"Error In Database"
-            })  
-        }
-         return res.status(201).json({
-            success:true,
-            message:'Invoice Saved',
-        })
-     } catch (error) {
-        return res.status(500).json({
-            success:true,
-            message:"Internal Server Error"
-        })
-     }   
-}
+    const savedInvoice = await LubePurchaseModel.create(data);
+
+    const stockData = data.productList.map(product => ({
+      productName: product.productName,
+      productCompanyName: data.companyName,
+      gstPer: product.gstPer,
+      netVolume: product.netVolume,
+      productRate: product.perProductRate,
+      gstAmount: product.gstAmount,
+      productStock: product.productStock,
+      totalAmount: product.productTotal,
+    }));
+
+    await LubeStock.insertMany(stockData);
+
+    return res.status(201).json({
+      success: true,
+      message: "Invoice Saved",
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 
 export const deleteInvoice = async (req,res) => {
     try {
